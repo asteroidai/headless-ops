@@ -4,7 +4,7 @@ A GTM engine for founders, with Claude Code as the backend.
 
 Four building blocks:
 
-1. **Claude Code is the backend.** A small server spawns headless `claude -p "/<skill> <payload>"` pnpm gtm list|add|tool|run|pull|webhook|jobss with a concurrency cap, a timeout, a log per job, and an endpoint the agent POSTs its result to. There is very little deterministic code.
+1. **Claude Code is the backend.** A small server spawns headless `claude -p "/<skill> <payload>"` runs with a concurrency cap, a timeout, a log per job, and an endpoint the agent POSTs its result to. There is very little deterministic code.
 2. **Webhooks are signals.** `POST /webhooks/:source`. Each source verifies its own secret and turns the payload into a `Signal`. The config maps a signal to a skill.
 3. **Cron jobs are pulls.** Schedules in config fetch new items from an API (new stargazers, keyword mentions) and route them the same way.
 4. **Skills are markdown.** `.claude/skills/*/SKILL.md` tells Claude what to do, step by step.
